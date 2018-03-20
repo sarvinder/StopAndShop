@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="1"
+        android:title="@string/action_search"
+        android:icon="@drawable/search"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_shop"
+        android:orderInCategory="1"
+        android:title="@string/action_shop"
+        android:icon="@drawable/shoping"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/action_notification"
+        android:orderInCategory="1"
+        android:title="@string/action_notification"
+        android:icon="@drawable/notification"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/action_bookmark"
+        android:orderInCategory="1"
+        android:title="@string/action_bookmark"
+        android:icon="@drawable/bookmark"
+        app:showAsAction="always"
+        />
+
+</menu>

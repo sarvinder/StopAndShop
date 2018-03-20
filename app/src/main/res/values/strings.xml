@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">StopAndShop</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="action_shop">Search</string>
+    <string name="action_notification">Search</string>
+    <string name="action_bookmark">Search</string>
+    <string name="signup_and_discount">Sign up and enjoy discount on 1st purchase</string>
+
+</resources>
