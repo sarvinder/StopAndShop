@@ -8,40 +8,10 @@
     tools:context="com.example.login.stopandshop.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_View"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ccc" />
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:id="@+id/categories_to_Sell"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:paddingLeft="30dp"
-                android:background="@color/dribbble_link_highlight"
-                android:textColor="@color/text_primary_light"
-                android:text="@string/signup_and_discount"/>
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:id="@+id/trending"/>
-        </LinearLayout>
-    </ScrollView>
 </android.support.constraint.ConstraintLayout>
