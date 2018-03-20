@@ -19,7 +19,12 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.login.stopandshop.Utils.Adapters.CategoryToShopAdaptor;
+import com.example.login.stopandshop.Utils.Adapters.MainAdapter;
+import com.example.login.stopandshop.Utils.Adapters.Pojo.Horizontal;
+import com.example.login.stopandshop.Utils.Adapters.Pojo.Vertical;
 import com.example.login.stopandshop.Utils.Adapters.TrendsAdapter;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,14 +32,11 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.categories_to_Sell)
-    RecyclerView recyclerView;
-
-    @BindView(R.id.trending)
-    RecyclerView trendsRecyclerView;
 
     CategoryToShopAdaptor categoryToShopAdaptor;
     TrendsAdapter trendsAdapter;
+
+    private ArrayList<Object> objects = new ArrayList<>();
 
 
     @Override
@@ -65,7 +67,6 @@ public class MainActivity extends AppCompatActivity
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.designer_news_super_dark));
 
 
-        setUpCategoryToSellRecyclerView();
         setUpTrendsRecyclerView();
 
 
@@ -87,31 +88,41 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //lets check if commit works
+
     }
 
     private void setUpTrendsRecyclerView() {
 
-        trendsRecyclerView.setHasFixedSize(true);
-
-        trendsAdapter = new TrendsAdapter();
-        trendsRecyclerView.setAdapter(trendsAdapter);
-        trendsRecyclerView.setLayoutManager(new LinearLayoutManager(this ));
-
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_View);
+        MainAdapter adapter = new MainAdapter(this, getObject());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
-    private void setUpCategoryToSellRecyclerView() {
-
-
-        //initailize and implement the recycler view
-        recyclerView.setHasFixedSize(true);
-
-        categoryToShopAdaptor = new CategoryToShopAdaptor();
-        recyclerView.setAdapter(categoryToShopAdaptor);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL,false));
-
+    private ArrayList<Object> getObject() {
+        objects.add(getVerticalData().get(0));
+        objects.add(getHorizontalData().get(0));
+        return objects;
     }
+
+    public static ArrayList<Vertical> getVerticalData() {
+        ArrayList<Vertical> singleVerticals = new ArrayList<>();
+        singleVerticals.add(new Vertical("Charlie Chaplin"));
+        singleVerticals.add(new Vertical("Mr.Bean"));
+        singleVerticals.add(new Vertical("Jim Carrey"));
+        return singleVerticals;
+    }
+
+
+    public static ArrayList<Horizontal> getHorizontalData() {
+        ArrayList<Horizontal> singleHorizontals = new ArrayList<>();
+        singleHorizontals.add(new Horizontal( "Charlie Chaplin"));
+        singleHorizontals.add(new Horizontal( "Mr.Bean"));
+        singleHorizontals.add(new Horizontal( "Jim Carrey"));
+        return singleHorizontals;
+    }
+
 
     @Override
     public void onBackPressed() {
