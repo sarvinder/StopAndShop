@@ -101,8 +101,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     private ArrayList<Object> getObject() {
-        objects.add(getVerticalData().get(0));
         objects.add(getHorizontalData().get(0));
+        objects.add(getVerticalData().get(0));
         return objects;
     }
 
