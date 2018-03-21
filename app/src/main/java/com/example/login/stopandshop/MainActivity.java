@@ -21,6 +21,7 @@ import android.view.WindowManager;
 import com.example.login.stopandshop.Utils.Adapters.CategoryToShopAdaptor;
 import com.example.login.stopandshop.Utils.Adapters.MainAdapter;
 import com.example.login.stopandshop.Utils.Adapters.Pojo.Horizontal;
+import com.example.login.stopandshop.Utils.Adapters.Pojo.Signup;
 import com.example.login.stopandshop.Utils.Adapters.Pojo.Vertical;
 import com.example.login.stopandshop.Utils.Adapters.TrendsAdapter;
 
@@ -28,6 +29,8 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static java.lang.Boolean.TRUE;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -102,6 +105,7 @@ public class MainActivity extends AppCompatActivity
 
     private ArrayList<Object> getObject() {
         objects.add(getHorizontalData().get(0));
+        objects.add(getSignUpData().get(0));
         objects.add(getVerticalData().get(0));
         return objects;
     }
@@ -111,6 +115,12 @@ public class MainActivity extends AppCompatActivity
         singleVerticals.add(new Vertical("Charlie Chaplin"));
         singleVerticals.add(new Vertical("Mr.Bean"));
         singleVerticals.add(new Vertical("Jim Carrey"));
+        return singleVerticals;
+    }
+
+    public static ArrayList<Signup>getSignUpData(){
+        ArrayList<Signup> singleVerticals = new ArrayList<>();
+        singleVerticals.add(new Signup(TRUE));
         return singleVerticals;
     }
 
