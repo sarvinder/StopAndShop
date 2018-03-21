@@ -8,6 +8,7 @@ public class Vertical {
 
     private String header, subHeader;
     private int image;
+    private Boolean signup;
 
     public Vertical( ) {
 
@@ -21,6 +22,15 @@ public class Vertical {
 
     public Vertical(String header){
         this.header = header;
+    }
+
+    public Vertical(String header,Boolean signup){
+        this.header = header;
+        this.signup = signup;
+    }
+
+    public Boolean getSignup(){
+        return signup;
     }
 
     public String getHeader() {
@@ -47,4 +57,7 @@ public class Vertical {
         this.image = image;
     }
 
+    public void setSignup(boolean signup){
+        this.signup = signup;
+    }
 }

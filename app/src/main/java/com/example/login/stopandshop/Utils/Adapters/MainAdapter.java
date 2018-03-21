@@ -9,11 +9,13 @@ import android.view.ViewGroup;
 
 import com.example.login.stopandshop.R;
 import com.example.login.stopandshop.Utils.Adapters.Pojo.Horizontal;
+import com.example.login.stopandshop.Utils.Adapters.Pojo.Signup;
 import com.example.login.stopandshop.Utils.Adapters.Pojo.Vertical;
 
 import java.util.ArrayList;
 
 import static com.example.login.stopandshop.MainActivity.getHorizontalData;
+import static com.example.login.stopandshop.MainActivity.getSignUpData;
 import static com.example.login.stopandshop.MainActivity.getVerticalData;
 
 /**
@@ -26,6 +28,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<Object> items;
     private final int VERTICAL = 1;
     private final int HORIZONTAL = 2;
+    private final int SIGNUP = 3;
 
     public MainAdapter(Context context, ArrayList<Object> items) {
         this.context = context;
@@ -46,6 +49,10 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 view = inflater.inflate(R.layout.horizontal, parent, false);
                 holder = new HorizontalViewHolder(view);
                 break;
+            case SIGNUP:
+                view = inflater.inflate(R.layout.horizontal_signup,parent,false);
+                holder = new SignUpViewHolder(view);
+                break;
 
             default:
                 view = inflater.inflate(R.layout.horizontal, parent, false);
@@ -63,6 +70,9 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             verticalView((VerticalViewHolder) holder);
         else if (holder.getItemViewType() == HORIZONTAL)
             horizontalView((HorizontalViewHolder) holder);
+        else if(holder.getItemViewType() == SIGNUP){
+            SignUpView((SignUpViewHolder)holder);
+        }
     }
 
     private void verticalView(VerticalViewHolder holder) {
@@ -79,6 +89,11 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holder.recyclerView.setAdapter(adapter);
     }
 
+    private void SignUpView(SignUpViewHolder holder){
+        SignUpAdapter adapter = new SignUpAdapter(getSignUpData());
+        holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        holder.recyclerView.setAdapter(adapter);
+    }
 
     @Override
     public int getItemCount() {
@@ -91,6 +106,8 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             return VERTICAL;
         if (items.get(position) instanceof Horizontal)
             return HORIZONTAL;
+        if(items.get(position) instanceof Signup)
+            return SIGNUP;
         return -1;
     }
 
@@ -108,6 +125,17 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         RecyclerView recyclerView;
 
         VerticalViewHolder(View itemView) {
+            super(itemView);
+            recyclerView = (RecyclerView) itemView.findViewById(R.id.inner_recyclerView);
+        }
+    }
+
+
+
+    public class SignUpViewHolder extends RecyclerView.ViewHolder {
+        RecyclerView recyclerView;
+
+        SignUpViewHolder(View itemView) {
             super(itemView);
             recyclerView = (RecyclerView) itemView.findViewById(R.id.inner_recyclerView);
         }
